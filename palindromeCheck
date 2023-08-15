@@ -1,0 +1,68 @@
+/*
+Input: x = 121 
+output: true 
+
+Input: x = -121 
+output: False
+
+Input: x = 10
+output: false
+
+123 % 10 => 3*10 => 30
+123/10 = 12
+12 % 10 => 2+30 => 32*10 => 320
+12 / 10 => 1
+1 % 10 => 1+320 => 321
+*/
+
+// let num = 1221;
+
+
+checkPalindrome = (num) =>{
+  var reverse = 0;
+  let remain = 0;
+  
+  while(num != 0){
+          remain = num % 10;
+          reverse = reverse*10 + remain
+          num = Number.parseInt(num / 10);
+      }
+  return reverse ;
+}
+
+let num = -12156
+let reverse = checkPalindrome(num);
+
+if(num < 0){
+  console.log(`Not palindrome & reverse of  ${num} is ${reverse}`)
+}
+else if(num == reverse ){
+  console.log(`NUmber is palindrome & reverse of  ${num} is ${reverse}`);
+}
+else{
+  console.log(`Not palindrome & reverse of  ${num} is ${reverse}`);
+}
+
+
+// mul = num % 10 ;
+// mul = mul + reverse;
+// reverse = mul*10 ;
+// console.log(reverse);
+// num = Number.parseInt(num / 10);
+// console.log(num)
+
+// mul = num % 10 ;
+// mul = mul + reverse;
+// reverse = mul*10 ;
+// console.log(reverse);
+// num = Number.parseInt(num / 10);
+// console.log(num)
+
+
+// mul = num % 10 ;
+// mul = mul + reverse;
+// reverse = mul;
+// console.log(reverse);
+// num = Number.parseInt(num / 10);
+// console.log(num);
+
