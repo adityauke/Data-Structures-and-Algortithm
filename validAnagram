@@ -1,0 +1,68 @@
+// var isAnagram = function(s, t) {
+//     let newS = s.split("").sort();
+//     let newT = t.split("").sort();
+//     counter = 0;
+//     for(let i = 0 ; i<s.length ; i++){
+//         if(newS[i] == newT[i]){
+//         counter++;
+//         }
+//     }
+//     if(counter == s.length){
+//         return true;
+//     }
+//     else{
+//     return false;
+//     }
+// };
+var isAnagram = function(s, t) {
+  if (s.length !== t.length) {
+    return false; // Anagrams must have the same length.
+  }
+
+  const charCount = {};
+
+  // Count characters in string s.
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    charCount[char] = charCount[char] ? charCount[char] + 1 : 1;
+    console.log(charCount[char] + "S")
+  }
+
+  // Check characters in string t.
+  for (let i = 0; i < t.length; i++) {
+    const char = t[i];
+    if (!charCount[char]) {
+      console.log(charCount[char])
+      return false; // If a character in t is not found in s, they are not anagrams.
+    }
+    
+    charCount[char]--;
+  }
+
+  return true; // If we reach here, all characters in t are accounted for in s.
+};
+
+let var1 = "anagram";
+let var2 = "nagaram";
+console.log(isAnagram(var1, var2)); // Output: true
+
+console.log(isAnagram("car", "rat")); // Output: false
+
+// anagrams("anagram" , "nagaram");
+
+
+// console.log(isAnagram(var1 , var2));
+// console.log(isAnagram("car" , "rat"));
+
+
+// const sortedarr1 = var1.split("").sort();
+// const sortedarr2 = var2.split("").sort();
+
+// console.log(sortedarr1);
+// console.log(sortedarr2);
+
+// for(let alpha of sortedarr1){
+//   for(let alpha2 of sortedarr2){
+//     console.log(alpha , alpha2);
+//   }
+// }
