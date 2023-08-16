@@ -1,0 +1,52 @@
+/*
+var groupAnagrams = function(strs) {
+    
+};
+
+strs1 = ["eat","tea","tan","ate","nat","bat"];
+//Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+strs2 = [""];
+// Output: [[""]]
+strs3 = ["a"];
+// Output: [["a"]]
+
+
+console.log(groupAnagrams(strs1));
+console.log(groupAnagrams(strs2));
+console.log(groupAnagrams(strs3));
+*/
+
+let strs1 = ["eat", "tea", "tan", "ate", "nat", "bat"];
+// let map = new Map();
+// let split;
+// strs1.sort();
+// console.log(strs1);
+
+// for (let i = 0; i < strs1.length; i++) {
+//   split = strs1[i].split("").sort().join("");
+//   if (map.has(split)) {
+//     map.set(split, [...map.get(split), strs1[i]]);
+//   } else {
+//     map.set(split, [strs1[i]]);
+//   }
+// }
+
+// const result = Array.from(map.values());
+// return result;
+
+let map = {};
+
+for (let i = 0; i < strs1.length; i++) {
+  let key = strs1[i].split("").sort().join("");
+  console.log(key);
+  if(map[key]){
+    map[key].push(strs1[i]);
+  }
+  else{
+    map[key] = [strs1[i]];
+  }
+  // const result = Array.from(map.values());
+  
+  // return result;
+}
+console.log(Object.values(map))
