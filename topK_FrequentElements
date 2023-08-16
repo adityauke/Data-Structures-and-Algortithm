@@ -1,0 +1,37 @@
+// var topKFrequent = function(nums, k) {
+    
+// };
+
+
+let nums = [1, 1, 1, 2, 2, 3];
+let k = 2;
+
+let map = new Map();
+
+for (let i = 0; i < nums.length; i++) {
+  if (map.has(nums[i])) {
+    map.set(nums[i], map.get(nums[i]) + 1);
+  } else {
+    map.set(nums[i], 1);
+  }
+}
+
+const mapSort1 = [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(entry => entry[0]);
+console.log(mapSort1);
+
+
+
+/*
+var topkFrequent = function (nums, k) {
+  
+let map = {}
+  
+for (let num of nums) {
+    if (!map [num]) 
+      map[num] = 0
+      map [num]++
+}
+  
+return ...Object.keys(map)].sort((a,b) map[b] map [a]).slice(0, k)
+};
+*/
