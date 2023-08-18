@@ -1,0 +1,60 @@
+let nums = [1,2,3,4];
+// let nums = [-1,1,0,-3,3];
+
+let left = 1;
+let right = 1;
+let product = new Array(nums.length)
+
+for(let i = 0 ; i< nums.length - 1; i++){
+  product[i] = left;
+  left = left*nums[i]
+}
+console.log(product)
+for(let i = nums.length-1 ; i>= 0; i--){
+  product[i] *= right;
+  right = right * nums[i];
+}
+console.log(product)
+
+
+
+/*
+function productExceptSelf(nums) {
+  const output = new Array(nums.length);
+
+  
+  let leftProduct = 1;
+  for (let i = 0; i < nums.length; i++) {
+    output[i] = leftProduct;
+    leftProduct *= nums[i];
+  }
+
+  let rightProduct = 1;
+  for (let i = nums.length - 1; i >= 0; i--) {
+    output[i] *= rightProduct;
+    rightProduct *= nums[i];
+  }
+
+  return output;
+}
+
+const nums = [1, 2, 3, 4];
+const result = productExceptSelf(nums);
+console.log(result); // Output: [24, 12, 8, 6]
+
+
+*/
+
+
+// let product = 1
+// for (let i = 0 ; i<nums.length ; i++){
+//   product = product * nums[i];
+// }
+// console.log(product);
+
+// let output = []
+// for (let i = 0 ; i<nums.length ; i++){
+//   let num = product / nums[i];
+//   output.push(num)
+// }
+// console.log(output)
