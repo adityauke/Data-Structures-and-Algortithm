@@ -1,0 +1,71 @@
+var isValidSudoku = function(board) {
+
+};
+let board = 
+[["8","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
+// let board = 
+// [["5","3",".",".","7",".",".",".","."]
+// ,["6",".",".","1","9","5",".",".","."]
+// ,[".","9","8",".",".",".",".","6","."]
+// ,["8",".",".",".","6",".",".",".","3"]
+// ,["4",".",".","8",".","3",".",".","1"]
+// ,["7",".",".",".","2",".",".",".","6"]
+// ,[".","6",".",".",".",".","2","8","."]
+// ,[".",".",".","4","1","9",".",".","5"]
+// ,[".",".",".",".","8",".",".","7","9"]];
+    let rowMap ={}
+    let colMap = {}
+    let boxMap = {}
+    
+  //   for(let row = 0; row < 9 ; row++){
+  //     for(let col = 0; col < 9 ; col++){
+        
+  //       const value = board[row][col];
+    
+  //       if(value!=="."){
+  //         const boxIndex = Math.floor(row/3)*3 + Math.floor(col/3);
+  //         if(rowMap[`${row} - ${value}`] || colMap[`${col} - ${value}`] || boxMap[`${boxIndex} - ${value}`]){
+  //           console.log(`for index of row is ${row} -->` + rowMap[`${row} - ${value}`] );
+  //         console.log(`for index of column is ${col} -->` + colMap[`${col} - ${value}`] );
+  //         console.log(`for index of box is ${boxIndex} -->` + boxMap[`${boxIndex} - ${value}`] );
+  //           return false;
+  //         }
+  //         console.log(`for index of row is ${row} -->` + rowMap[`${row} - ${value}`] );
+  //         console.log(`for index of column is ${col} -->` + colMap[`${col} - ${value}`] );
+  //         console.log(`for index of box is ${boxIndex} -->` + boxMap[`${boxIndex} - ${value}`] );
+  //       }
+  //       console.log("\n")
+  //     }
+      
+  //   }
+  // return true;
+
+
+var isValidSudoku = function(board) {
+  for (let i = 0; i < 9; i++) {
+      let row = new Set();
+      let  col = new Set();
+      let  box = new Set();
+
+    for (let j = 0; j < 9; j++) {
+      let _row = board[i][j];
+      let _col = board[j][i];
+      let _box = board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+(j%3)]
+      
+      if (_row != '.') {
+        if (row.has(_row)) return false;
+        row.add(_row);
+      }
+      if (_col != '.') {
+        if (col.has(_col)) return false;
+        col.add(_col);
+      }
+      
+      if (_box != '.') {
+        if (box.has(_box)) return false;
+        box.add(_box);
+      } 
+    }
+  }
+  return true
+};
