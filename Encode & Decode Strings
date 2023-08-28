@@ -1,0 +1,49 @@
+// Input: ["lint","code","love","you"]
+// Output: ["lint","code","love","you"]
+// Explanation:
+// One possible encode method is: "lint:;code:;love:;you"
+
+// Input: ["we", "say", ":", "yes"]
+// Output: ["we", "say", ":", "yes"]
+// Explanation:
+// One possible encode method is: "we:;say:;:::;yes"
+
+
+let str = ["lint","code","love","you"];
+// let encode = str.join(":;");
+// console.log(`Encoded Value is --> ${encode}`);
+
+let decode = "lint:;code:;love:;you"
+// let strval = decode.split(':;');
+// console.log(`Dencoded Value is --> `+ strval)
+// console.log(strval)
+
+
+let encode=""
+for(let i = 0 ; i< str.length ; i++){
+  if(i !== str.length-1){
+    encode += str[i].concat(":;");
+  }
+  else{
+    encode += str[i]
+  }
+}
+console.log(encode)
+
+
+let decodedArr = [];
+let currentStr = ""
+for(let i = 0 ; i< decode.length ; i++){
+  if(decode[i]==":" && decode[i+1]==";"){
+    decodedArr.push(currentStr);
+    currentStr = '';
+    i++;
+  }
+  else{
+    currentStr += decode[i];
+  }
+}
+  if (currentStr !== "") {
+  decodedArr.push(currentStr);
+}
+console.log(decodedArr);
