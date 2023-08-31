@@ -1,0 +1,53 @@
+// var isValid = function(s) {
+//     let stack = [];
+
+//     for (let i = 0; i < s.length; i++) {
+//         if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+//             stack.push(s[i]);
+//         } else {
+//             if (stack.length === 0) {
+//                 return false;
+//             }
+//             let top = stack.pop();
+//             if (
+//                 (s[i] === ")" && top !== "(") ||
+//                 (s[i] === "}" && top !== "{") ||
+//                 (s[i] === "]" && top !== "[")
+//             ) {
+//                 return false;
+//             }
+//         }
+//     }
+
+//     return stack.length === 0;
+// };
+
+// console.log(isValid("()"));
+// console.log(isValid("()[]{}"));
+// console.log(isValid("(]"));
+
+var isValid = function(s) {
+  let stack = [];
+  const parent = '() {} []'
+  let i =0;
+  while( i< s.length){
+    stack.push(s[i]);
+    i++;
+
+    let open = stack[stack.length-2];
+    let close = stack[stack.length-1];
+
+    let joinparen = open + close;
+    
+    if(parent.includes(joinparen)){
+      stack.pop();
+      stack.pop();
+    }
+  }
+  
+  return stack.length===0;
+};
+
+console.log(isValid("()"));
+console.log(isValid("()[]{}"));
+console.log(isValid("(]"));
